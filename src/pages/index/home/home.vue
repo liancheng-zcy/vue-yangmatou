@@ -1,31 +1,7 @@
 <template>
   <div class="wrap">
     <Ad v-if="!$store.state.isSticky" ref="adRef"></Ad>
-    <div id="load-waptopbar" class="loadwaptopbar">
-      <div class="loadtopnav">
-        <div id="load-ymatou-logo" style="display: none;">
-          <a>
-            <img alt="logo" />
-          </a>
-        </div>
-        <div class="nav" id="load-nav-content">
-          <a @click="homeClick">
-            <span id="loadwaptopbar-home" class="active">首页</span>
-          </a>
-          <a @click="communityClick">
-            <span id="loadwaptopbar-community" class>社区</span>
-          </a>
-        </div>
-        <div class="icon-list">
-          <a @click="cartClick" id="load-shopcart-icon">
-            <img src="~assets/images/car.png" alt="购物车" />
-          </a>
-          <a @click="myClick" id="load-personal-icon">
-            <img src="~assets/images/wode.png" alt="个人中心" />
-          </a>
-        </div>
-      </div>
-    </div>
+    <Nav :navType = "navType"></Nav>
     <div class="home-wrap">
       <div class="home-content">
         <!-- 广告 -->
@@ -123,6 +99,7 @@ import Vue from "vue";
 import XsqList from "components/home/XsqList";
 import CnxhList from "components/home/CnxhList";
 import Ad from "components/common/ad.vue";
+import Nav from 'components/common/nav'
 import BScroll from "better-scroll";
 import { Swipe, SwipeItem, Lazyload, Divider } from "vant";
 Vue.use(Swipe)
@@ -141,22 +118,11 @@ export default Vue.extend({
         "http://pic1.ymatou.com/G01/M01/5E/4F/CgzUB13NXbuAbcjwAAFdteowL-E310_375_128_o.jpg",
         "http://pic1.ymatou.com/G01/M03/64/C9/CgzUBl3Or56AdkrkAAM-dZSqkrE826_375_128_o.png",
         "http://pic1.ymatou.com/G01/M02/5E/79/CgzUB13NYmGAaBkgAAQHFIEswMw461_375_128_o.png"
-      ]
+      ],
+      navType:'home'
     };
   },
   methods: {
-    communityClick() {
-      this.$router.push("/note/community");
-    },
-    homeClick() {
-      this.$router.push("/");
-    },
-    myClick() {
-      this.$router.push("/myorder");
-    },
-    cartClick() {
-      alert("我是购物车");
-    },
     topicClick() {
       this.$router.push("/topic");
     }
@@ -164,7 +130,8 @@ export default Vue.extend({
   components: {
     XsqList,
     Ad,
-    CnxhList
+    CnxhList,
+    Nav
   },
   mounted() {
     let bScroll = new BScroll(".XsqListWrap", {
@@ -184,48 +151,6 @@ export default Vue.extend({
 .wrap
   width 100%
   height 100%
-  #load-waptopbar
-      position sticky
-      z-index 10
-      width 100%
-      top 0
-      left 0
-      background #fff
-      border-bottom 1px solid #DEDEDE
-      .loadtopnav
-        width 100%
-        height 0.4rem
-        overflow hidden
-        .nav
-          display inline-block
-          float left
-          margin-right 0.08rem
-          a
-            display inline-block
-            padding 0 0.08rem
-          span
-            display inline-block
-            line-height 0.24rem
-            padding-top 0.07rem
-            color #646464
-            font-size 0.12rem
-          span.active
-            color #383838
-            border-bottom 3px solid #cc3333
-      .icon-list
-        display inline-block
-        float right
-        a
-          width 0.4rem
-          height 0.4rem
-          display inline-block
-          float left
-          text-align center
-          img
-            height 0.18rem
-            display inline-block
-            margin-top 0.11rem
-
   .home-wrap
     width 100%
     height 100%

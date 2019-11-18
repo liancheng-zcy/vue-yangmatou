@@ -1,9 +1,9 @@
 <template>
-  <div id="load-banner" class="loadbanner">
+  <div id="load-banner" class="loadbanner" v-if="close">
       <span class="loadbanner-bgcover">
         <img src="http://pic1.ymatou.com/G02/M06/47/B9/CgvUBVpv7eSAWJr4AAB3io7qxQM413_15_2_o.png" />
       </span>
-      <span class="loadbanner-close" id="load-banner-close">
+      <span class="loadbanner-close" id="load-banner-close"  @click="closeClick">
         <i class="loadbanner-close-btn">&nbsp;</i>
       </span>
       <div class="loadbanner-main">
@@ -16,6 +16,18 @@
   import Vue from 'vue'
 
   export default Vue.extend({
+
+    data(){
+      return{
+        close:true
+      }
+    },
+    methods:{
+      closeClick(){
+        console.log(1)
+        this.close = false
+      }
+    }
     
   })
 </script>
