@@ -1,5 +1,5 @@
 <template>
-  <li class="product-wrapper" :data-id = "CnxhValue.id" @click="detailClick">
+  <li class="product-wrapper" :productId = "CnxhValue.id" @click="detailClick" ref="idRef">
     <a>
       <div class="productLog">
         <img :src="CnxhValue.pic" alt />
@@ -25,10 +25,18 @@
 import Vue from "vue";
 
 export default Vue.extend({
+  data(){
+    return{
+
+    }
+  },
+  
   props:["CnxhValue"],
   methods:{
     detailClick(){
-      this.$router.push('/detail')
+      let id = this.CnxhValue.id
+      let timestamp = new Date().getTime();//可以用个时间戳解决跳转同一个路由的情况
+      this.$router.push({path:`/detail/${id}`})
     }
   }
 });

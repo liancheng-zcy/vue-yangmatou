@@ -88,7 +88,7 @@
             <span></span>猜你喜欢
           </van-divider>
           <!-- 猜你喜欢列表 -->
-          <CnxhList></CnxhList>
+          <CnxhList :cnxhType = "cnxhType"></CnxhList>
         </div>
       </div>
     </div>
@@ -119,7 +119,8 @@ export default Vue.extend({
         "http://pic1.ymatou.com/G01/M03/64/C9/CgzUBl3Or56AdkrkAAM-dZSqkrE826_375_128_o.png",
         "http://pic1.ymatou.com/G01/M02/5E/79/CgzUB13NYmGAaBkgAAQHFIEswMw461_375_128_o.png"
       ],
-      navType:'home'
+      navType:'home',
+      cnxhType:'home-wrap'
     };
   },
   methods: {
@@ -321,3 +322,4 @@ export default Vue.extend({
           height 0.16rem
           width 0.16rem
 </style>
+

@@ -44,57 +44,6 @@
               </div>
             </div>
             <!-- 弹出层 -->
-            <van-action-sheet v-model="show" cancel-text="取消">
-              <!-- 买手 -->
-              <div class="coupon-pop iphonex" v-if="showType == 'seller'">
-                <div class="title">买手优惠券</div>
-                <div class="list">
-                  <div class="item">
-                    <div class="item-cart">
-                      <div class="price">
-                        ¥
-                        <i>60</i>
-                      </div>
-                      <div class="rule">满1999元可用</div>
-                    </div>
-                    <div class="info">
-                      <div class="name">
-                        <span>买手券</span>限买手(小璐全球购)商品
-                      </div>
-                      <div class="time">2019.11.22-2019.11.25</div>
-                      <div class="info-btn">点击领取</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- 物流 -->
-              <div class="logistics-pop iphonex show" v-if="showType == 'logistics'">
-                <div class="item">
-                  <div class="name">虚拟发货</div>
-                  <div class="desc">支付成功且买手接单后，将自动闪电发货</div>
-                </div>
-                <div class="pic">
-                  <img src="//s1.ymatou.com/itemm/static/img/log-pinyou.e8056fe.png" />
-                </div>
-              </div>
-              <!-- 服务 -->
-              <div class="server-pop iphonex show"  v-if="showType == 'server'">
-                <div class="server-content">
-                  <div class="title">服务说明</div>
-                  <div class="list">
-                    <div class="service-item">
-                      <span class="name tag_jyps">假一赔三</span>
-                      <div class="content">100%海外正品，杜绝假货，让您无忧购物</div>
-                    </div>
-                    <div class="service-item">
-                      <span class="name tag_btth">售后无忧</span>
-                      <div class="content">商品在退货时买家只需寄回国内退货仓，无需寄回海外。</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- 商品信息 -->
-            </van-action-sheet>
           </div>
         </div>
         <div class="logistics-freight-server">
@@ -122,60 +71,328 @@
             <span class="tag">已选</span>
             <span class="value">血橙面膜-1盒=30片</span>
           </div>
-          <van-action-sheet v-model="infoShow" cancel-text="关闭">
-            <div class="sku-pop">
-              <div class="sku-content">
-                <div class="sku-info">
-                  <div
-                    class="pic"
-                    style="background-image: url(&quot;http://pic1.ymatou.com/G02/shangou/M0A/B6/8A/CgzUDF1aPPaAV6rCAAXu_CdOiIE019_1_1_n_w_lb.jpg&quot;);"
-                  ></div>
-                  <div class="desc">
-                    <span class="price">
-                      <i>¥&nbsp;</i>75
-                    </span>
-                    <span class="stock">库存充足</span>
-                    <span class="choosed">已选择: 血橙面膜-1盒=30片</span>
-                  </div>
-                </div>
-                <div class="spec-wrap">
-                  <div class="spec">
-                    <div class="title">规格分类</div>
-                    <div class="options">
-                      <span class="sku" >血橙面膜-1盒=30片</span>
-                      <!-- :class="selected" -->
+          <!-- sku弹出层 -->
+        </div>
+        <!-- 用户评价 -->
+        <div class="buyer-rate">
+          <van-divider :style="{ color: '#646464;', borderColor: '#cccccc', padding: '0 .5rem' }">
+            <span></span>评价
+          </van-divider>
+          <div class="b-title">
+            <span class="name">买家评价</span>
+            <span class="rate">
+              <i class="full"></i>
+              <i class="full"></i>
+              <i class="full"></i>
+              <i class="full"></i>
+              <i class="full"></i>
+            </span>
+            <span class="num">4.7</span>
+            <span class="more">查看全部456条</span>
+          </div>
+          <div class="tag-content">
+            <div class="tag-name">购买过该商品的用户认为</div>
+          </div>
+        </div>
+        <!-- 用户评价后续 -->
+        <!-- <div class="note-list">
+          <div class="note-list-content">
+            <div class="note-item">
+              <div class="content">
+                <div class="info">
+                  <div class="buyer">
+                    <div class="avg">
+                      <img src="http://staticontent.ymatou.com/app/userlogo/mj.jpg" />
                     </div>
+                    <div class="name">我**哒</div>
+                    <div class="grade lever2"></div>
                   </div>
+                  <div
+                    class="desc"
+                  >用了几天才来评价，很不错，用了之后头发很光滑，质感值得购买，很好用，能能舒缓头发干枯毛躁。之后头发很滋润，有一股淡淡的香味挺好闻的。</div>
                 </div>
-                <div class="purchase-amount">
-                  <div class="text">
-                    <span class="title">
-                      购买数量
-                      <br />
-                    </span>
-                  </div>
-                  <div class="amount">
-                    <input type="button" value="-" onclick class="btn-minus" />
-                    <span class="num">1</span>
-                    <input type="button" value="+" onclick class="btn-plus" />
-                  </div>
+                <div class="pic lazyload transition" style="opacity: 1;">
+                  <img
+                    src="http://pic1.ymatou.com/G02/M08/ED/FA/CgzUC13LbAKAavCZAAIV_5eYzvA76_1_1_w_l.jpeg"
+                    alt
+                  />
                 </div>
               </div>
-              <div class="preorder-pop-layer preorder-pop-layer-active"></div>
-              <div class="spec-confirm">
-                <span class="half">加入购物车</span>
-                <span class="half">立即购买</span>
-              </div>
-              <div class="close"></div>
             </div>
-          </van-action-sheet>
+            <div class="note-item">
+              <div class="content">
+                <div class="info">
+                  <div class="buyer">
+                    <div class="avg">
+                      <img src="http://staticontent.ymatou.com/app/userlogo/mj.jpg" />
+                    </div>
+                    <div class="name">我**哒</div>
+                    <div class="grade lever2"></div>
+                  </div>
+                  <div
+                    class="desc"
+                  >用了几天才来评价，很不错，用了之后头发很光滑，质感值得购买，很好用，能能舒缓头发干枯毛躁。之后头发很滋润，有一股淡淡的香味挺好闻的。</div>
+                </div>
+                <div class="pic lazyload transition" style="opacity: 1;">
+                  <img
+                    src="http://pic1.ymatou.com/G02/M08/ED/FA/CgzUC13LbAKAavCZAAIV_5eYzvA76_1_1_w_l.jpeg"
+                    alt
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="note-more">
+              <span>查看全部</span>
+              <span>MORE</span>
+            </div>
+          </div>
+        </div>-->
+        <noteList></noteList>
+        <!-- 店铺评分 -->
+        <div class="seller-wrap">
+          <div class="seller-info">
+            <div
+              class="pic lazyload transition"
+              style="opacity: 1; background-image: url(&quot;http://pic1.ymatou.com/G02/M08/17/20/CgvUBFsQ7BOAN3RJAADcDf-V3R4356_1_1_m.jpg&quot;);"
+            ></div>
+            <div class="info">
+              <div class="name">首尔姐妹花</div>
+              <div class="type-coutry">
+                <span class="selle-type">
+                  <i>超级买手</i>
+                  <i class="num hign">4.7</i>
+                </span>
+                <span class="contry">
+                  <img src="http://img.ymatou.com/app/flag/circle/Korea.png" />韩国
+                </span>
+              </div>
+            </div>
+            <div class="btn-follow">
+              <i class="tag follow"></i>未关注
+            </div>
+          </div>
+          <div class="seller-point">
+            <div class="item">
+              <span class="name">最近销量</span>
+              <span class="val">12312</span>
+            </div>
+            <div class="item">
+              <span class="name">粉丝</span>
+              <span class="val">37703</span>
+            </div>
+            <div class="item">
+              <span class="name">综合评分</span>
+              <span class="torst hign">4.7</span>
+              <span class="torst-pop hign">高于平均4.87%</span>
+            </div>
+            <div class="item">
+              <span class="keyval">
+                <i class="key">买家评分</i>
+                <i class="val hign">4.8</i>
+              </span>
+              <span class="keyval">
+                <i class="key">物流服务</i>
+                <i class="val hign">4.7</i>
+              </span>
+              <span class="keyval">
+                <i class="key">客户服务</i>
+                <i class="val hign">4.8</i>
+              </span>
+            </div>
+          </div>
+          <div class="seller-btn">
+            <a href="//m.ymatou.com/sellerhome/forBuyerApp/sellerHome?SellerId=20927755">进店看看</a>
+          </div>
+        </div>
+        <div class="zhengpin">
+          <img src="//s1.ymatou.com/itemm/static/img/zhengpin.855bfb9.png" />
+        </div>
+        <div class="image-text-wrap">
+          <van-divider :style="{ color: '#9999a4;', borderColor: '#ccc', padding: '0 .8rem',}">详情</van-divider>
+          <div class="title">
+            <span class="chinese">图文详情</span>
+          </div>
+          <div class="list">
+            <div class="item" v-if="buyer.length > 0">
+              <van-divider
+                :style="{ color: '#646464;', borderColor: '#e4450c', padding: '0 .8rem',background:'#fff'}"
+              >{{buyer[0].title}}</van-divider>
+              <div class="text">{{buyer[0].text}}</div>
+
+              <div
+                class="pics"
+                v-for="(picValue,index) in buyer[0].picList"
+                :key="index + picValue"
+              >
+                <img
+                  :src="picValue"
+                  style="height: 312.427px; opacity: 1;"
+                  class="lazyload transition"
+                />
+              </div>
+            </div>
+            <div class="item" v-if="parameter.length > 0">
+              <van-divider
+                :style="{ color: '#646464;', borderColor: '#e4450c', padding: '0 .8rem',background:'#fff'}"
+              >{{parameter[0].title}}</van-divider>
+              <div
+                class="keylist"
+                v-for="(keyListValue,index) in parameter[0].propertyList"
+                :key="index + keyListValue"
+              >
+                <div class="keyitem">
+                  <span class="key">{{keyListValue.key}}</span>
+                  <span class="value">{{keyListValue.value}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="item" v-if="introduction.length > 0">
+              <van-divider
+                :style="{ color: '#646464;', borderColor: '#e4450c', padding: '0 .8rem',background:'#fff'}"
+              >{{introduction[0].title}}</van-divider>
+              <div class="text">{{introduction[0].text}}</div>
+              <div class="pics" v-for="(pic,index) in introduction[0].picList" :key="index + pic">
+                <img :src="pic" style="height: 390.533px; opacity: 1;" class="lazyload transition" />
+              </div>
+            </div>
+            <div class="item" v-if="handBuyer.length > 0">
+              <van-divider
+                :style="{ color: '#646464;', borderColor: '#e4450c', padding: '0 .8rem',background:'#fff'}"
+              >{{handBuyer[0].title}}</van-divider>
+              <div class="text">{{handBuyer[0].text}}</div>
+              <div class="pics" v-for="(pic,index) in handBuyer[0].picList" :key="pic+index">
+                <img :src="pic" style="height: 694.84px; opacity: 1;" class="lazyload transition" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="likeproduct">
+          <van-divider :style="{ color: '#646464;', borderColor: '#cccccc', padding: '0 .16rem' }">
+            <span></span>猜你喜欢
+          </van-divider>
+          <div class="likeproduct-content">
+            <CnxhList :cnxhType="cnxhType"></CnxhList>
+          </div>
         </div>
       </div>
     </div>
+    <div class="operate-wrap notIphoneX">
+      <div class="left">
+        <span class="collection">
+          <i class="icon icon-collect"></i>
+          <i class="text">收藏</i>
+        </span>
+      </div>
+      <div class="right">
+        <span class="addCart">加入购物车</span>
+        <span class="buy">立即购买</span>
+      </div>
+    </div>
+    <van-action-sheet v-model="show" cancel-text="取消">
+      <!-- 买手 -->
+      <div class="coupon-pop iphonex" v-if="showType == 'seller'">
+        <div class="title">买手优惠券</div>
+        <div class="list">
+          <div class="item">
+            <div class="item-cart">
+              <div class="price">
+                ¥
+                <i>60</i>
+              </div>
+              <div class="rule">满1999元可用</div>
+            </div>
+            <div class="info">
+              <div class="name">
+                <span>买手券</span>限买手(小璐全球购)商品
+              </div>
+              <div class="time">2019.11.22-2019.11.25</div>
+              <div class="info-btn">点击领取</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 物流 -->
+      <div class="logistics-pop iphonex show" v-if="showType == 'logistics'">
+        <div class="item">
+          <div class="name">虚拟发货</div>
+          <div class="desc">支付成功且买手接单后，将自动闪电发货</div>
+        </div>
+        <div class="pic">
+          <img src="//s1.ymatou.com/itemm/static/img/log-pinyou.e8056fe.png" />
+        </div>
+      </div>
+      <!-- 服务 -->
+      <div class="server-pop iphonex show" v-if="showType == 'server'">
+        <div class="server-content">
+          <div class="title">服务说明</div>
+          <div class="list">
+            <div class="service-item">
+              <span class="name tag_jyps">假一赔三</span>
+              <div class="content">100%海外正品，杜绝假货，让您无忧购物</div>
+            </div>
+            <div class="service-item">
+              <span class="name tag_btth">售后无忧</span>
+              <div class="content">商品在退货时买家只需寄回国内退货仓，无需寄回海外。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 商品信息 -->
+    </van-action-sheet>
+    <van-action-sheet v-model="infoShow" cancel-text="关闭" class="infoShow">
+      <div class="sku-pop">
+        <div class="sku-content">
+          <div class="sku-info">
+            <div
+              class="pic"
+              style="background-image: url(&quot;http://pic1.ymatou.com/G02/shangou/M0A/B6/8A/CgzUDF1aPPaAV6rCAAXu_CdOiIE019_1_1_n_w_lb.jpg&quot;);"
+            ></div>
+            <div class="desc">
+              <span class="price">
+                <i>¥&nbsp;</i>75
+              </span>
+              <span class="stock">库存充足</span>
+              <span class="choosed">已选择: 血橙面膜-1盒=30片</span>
+            </div>
+          </div>
+          <div class="spec-wrap">
+            <div class="spec">
+              <div class="title">规格分类</div>
+              <div class="options">
+                <span class="sku">血橙面膜-1盒=30片</span>
+                <!-- :class="selected" -->
+              </div>
+            </div>
+          </div>
+          <div class="purchase-amount">
+            <div class="text">
+              <span class="title">
+                购买数量
+                <br />
+              </span>
+            </div>
+            <div class="amount">
+              <input type="button" value="-" onclick class="btn-minus" />
+              <span class="num">1</span>
+              <input type="button" value="+" onclick class="btn-plus" />
+            </div>
+          </div>
+        </div>
+        <div class="preorder-pop-layer preorder-pop-layer-active"></div>
+        <div class="spec-confirm">
+          <span class="half">加入购物车</span>
+          <span class="half">立即购买</span>
+        </div>
+        <div class="close"></div>
+      </div>
+    </van-action-sheet>
   </div>
 </template>
 
 <script>
+import { get } from "utils/http.js";
+import CnxhList from "components/home/CnxhList";
+import noteList from "components/detail/noteList";
 import Vue from "vue";
 import Ad from "components/common/ad";
 import Nav from "components/common/nav";
@@ -185,24 +402,67 @@ Vue.use(Swipe)
   .use(ActionSheet)
   .use(Lazyload);
 export default Vue.extend({
+  components: {
+    Ad,
+    Nav,
+    CnxhList,
+    noteList
+  },
   data() {
     return {
       navType: "detail",
       current: 0,
       show: false,
-      showType:'',
+      showType: "",
       infoShow: false,
-      images: [
-        "http://pic1.ymatou.com/G02/M06/DE/4C/CgzUDF3OS9uAQFB1AAHLBy1_jzE039_375_128_o.png",
-        "http://pic1.ymatou.com/G01/M01/57/C4/CgzUB13MB-OAbx2FAAJH18ZGof4731_375_128_o.png",
-        "http://pic1.ymatou.com/G01/M00/5D/18/CgzUCV3NOHGAd25eAAPqbqJGD2I375_375_128_o.png",
-        "http://pic1.ymatou.com/G01/M01/5D/DF/CgzUCF3NUjqAejmKAANqovF1BC0297_375_128_o.png",
-        "http://pic1.ymatou.com/G01/M01/5E/4C/CgzUB13NXSmAcTHOAALLSLHFNLo405_375_128_o.jpg",
-        "http://pic1.ymatou.com/G01/M01/5E/4F/CgzUB13NXbuAbcjwAAFdteowL-E310_375_128_o.jpg",
-        "http://pic1.ymatou.com/G01/M03/64/C9/CgzUBl3Or56AdkrkAAM-dZSqkrE826_375_128_o.png",
-        "http://pic1.ymatou.com/G01/M02/5E/79/CgzUB13NYmGAaBkgAAQHFIEswMw461_375_128_o.png"
-      ]
+      cnxhType: "detail-wrap",
+      images: [],
+      buyer: [],
+      parameter: [],
+      introduction: [],
+      handBuyer: []
     };
+  },
+  watch: {
+    //解决跳转同一个路由的情况
+    $route(to, from) {
+      this.$router.go(0);
+    }
+  },
+  async mounted() {
+    let productId = this.$route.params.id;
+    let result = await get({
+      url: `/ajax/item/api/getProductDescriptionInfo?`,
+      params: {
+        productId: productId
+      }
+    });
+    let detailList = result.data.result.moduleList;
+    for (let i = 0; i < detailList.length; i++) {
+      if (detailList[i].title == "商品介绍") {
+        this.images = detailList[i].picList;
+      } else {
+        this.images.push(
+          "https://s1.ymatou.com/homem/images/placeholder-bb7773481a.png"
+        );
+      }
+
+      if (detailList[i].title == "买家须知") {
+        this.buyer.push(detailList[i]);
+      }
+
+      if (detailList[i].title == "商品参数") {
+        this.parameter.push(detailList[i]);
+      }
+
+      if (detailList[i].title == "商品介绍") {
+        this.introduction.push(detailList[i]);
+      }
+
+      if (detailList[i].title == "买手介绍") {
+        this.handBuyer.push(detailList[i]);
+      }
+    }
   },
   methods: {
     onChange(index) {
@@ -210,24 +470,19 @@ export default Vue.extend({
     },
     sellerClick() {
       this.show = true;
-      this.showType = 'seller'
+      this.showType = "seller";
     },
-     logisticsClick(){
-     this.show = true;
-      this.showType = 'logistics'
+    logisticsClick() {
+      this.show = true;
+      this.showType = "logistics";
     },
-    serverClick(){
-     this.show = true;
-     this.showType = 'server'
+    serverClick() {
+      this.show = true;
+      this.showType = "server";
     },
     infoClick() {
       this.infoShow = true;
-    },
-   
-  },
-  components: {
-    Ad,
-    Nav
+    }
   }
 });
 </script>
@@ -237,6 +492,8 @@ export default Vue.extend({
 .wrap
   width 100%
   height 100%
+  display flex
+  flex-direction column
   .detail-wrap
     width 100%
     height 100%
@@ -257,7 +514,7 @@ export default Vue.extend({
               width 100%
               height 3.11rem
             .custom-indicator
-              width 0.4rem
+              width 0.5rem
               height 0.16rem
               background #252525
               color #fff
@@ -274,11 +531,6 @@ export default Vue.extend({
         background-color #fff
         padding 0 0 0 0.1rem
         border-bottom 0.15rem solid #f1f1f1
-        .van-action-sheet__cancel
-          font-size 16px
-          line-height 38px
-          color #fff
-          background #cc3333
         .productinfo-content
           padding 0.08rem 0.1rem 0.08rem 0
           .product-name
@@ -409,191 +661,6 @@ export default Vue.extend({
               position relative
               z-index 1
           /* 弹出层 */
-          .van-popup--bottom.van-popup--round
-            border-radius 0 0 0 0
-            .van-action-sheet__content
-              width 100%
-              .coupon-pop
-                background-color #fff
-                border-top 2px solid #000
-                .title
-                  width 100%
-                  line-height 0.14rem
-                  font-size 0.12rem
-                  color #292929
-                  padding 0.1rem
-                .list
-                  width 100%
-                  overflow hidden
-                  padding 0 0.1rem
-                  max-height 0.87rem
-                  overflow-y auto
-                .list .item
-                  width 100%
-                  overflow hidden
-                  height 0.76rem
-                  display flex
-                  margin-bottom 0.1rem
-                  font-family PingFangSC-Regular
-                  background #fff
-                  position relative
-                  .item-cart
-                    width 0.89rem
-                    overflow hidden
-                    height 100%
-                    background-color #ffa968
-                    text-align center
-                    color #fff
-                    .price
-                      margin-top 0.09rem
-                      i
-                        font-size 0.28rem
-                    .rule
-                      font-size 0.12rem
-                  .info
-                    flex 1
-                    height 100%
-                    padding-left 0.08rem
-                    position relative
-                    .name
-                      width 100%
-                      font-size 0.12rem
-                      text-overflow ellipsis
-                      -webkit-line-clamp 2
-                      display -ms-flexbox
-                      overflow hidden
-                      white-space normal
-                      line-height 0.15rem
-                      margin-top 0.1rem
-                      margin-bottom 0.15rem
-                      span
-                        background-color #ffa968
-                        border-radius 0.02rem
-                        color #fff
-                        padding 0 0.04rem
-                        margin-right 0.04rem
-                        font-size 0.12rem
-                    .time
-                      font-size 0.12rem
-                      color #666
-                      display inline-block
-                    .info-btn
-                      position absolute
-                      right 0
-                      bottom 0.12rem
-                      border 1px solid #e95656
-                      padding 0.02rem 0.04rem
-                      border-radius 0.06rem
-                      font-size 0.12rem
-                      color #e95656
-                      background #fff
-              .logistics-pop.iphonex
-                background-color #fff
-                .item
-                  padding 0.15rem
-                  overflow hidden
-                  text-align center
-                  .name
-                    display inline-block
-                    font-size 0.14rem
-                    color #292929
-                    position relative
-                    &:before
-                      right -0.5rem
-                    &:before
-                      left -0.6rem
-                    &:before
-                      position absolute
-                      content ''
-                      width 0.5rem
-                      height 1px
-                      background-color #e95656
-                      top 50%
-                    &:after
-                      position absolute
-                      content ''
-                      width 0.5rem
-                      height 1px
-                      background-color #e95656
-                      top 50%
-                  .desc
-                    padding-top 0.1rem
-                    font-size 0.12rem
-                    color #666
-                    width 100%
-                    display inline-block
-                .pic
-                  width 100%
-                  overflow hidden
-                  margin-bottom 0.15rem
-                  img
-                    display inline-block
-                    width 100%
-              .server-pop
-                background-color #fff
-                .server-content
-                  padding 0.15rem 0
-                  overflow hidden
-                  text-align center
-                  .title
-                    display inline-block
-                    font-size 0.14rem
-                    color #292929
-                    position relative
-                    &:before
-                      right -0.5rem
-                    &:before
-                      left -0.6rem
-                    &:before
-                      position absolute
-                      content ''
-                      width 0.5rem
-                      height 1px
-                      background-color #e95656
-                      top 50%
-                    &:after
-                      position absolute
-                      content ''
-                      width 0.5rem
-                      height 1px
-                      background-color #e95656
-                      top 50%
-                  .list
-                    width 100%
-                    text-align left
-                    max-height 1.1rem
-                    overflow hidden
-                    overflow-y auto
-                    padding 0 0.15rem
-                    .service-item
-                      padding 0 0 0.1rem
-                      line-height 0.18rem
-                      overflow hidden
-                      .name
-                        padding-left 0.15rem
-                        font-size 0.12rem
-                        color #383838
-                        position relative
-                        &:after
-                          position absolute
-                          top 0.006rem
-                          left 0
-                          content ''
-                          width 0.14rem
-                          height 0.14rem
-                          vertical-align middle
-                      .tag_btth:after
-                        background-image url('~assets/images/pei.png')
-                        background-size cover
-                      .name.tag_jyps:after
-                        background-image url('~assets/images/kefu.png')
-                        background-size cover
-                      .content
-                        padding 0 0.15rem
-                        display inline-block
-                        width 100%
-                        font-size 0.12rem
-                        color #9b9b9b
       .logistics-freight-server
         width 100%
         overflow hidden
@@ -656,8 +723,7 @@ export default Vue.extend({
           float left
           margin-right 0.05rem
       .server-wrap
-        margin-left 0.1rem
-        padding 0.06rem 0.06rem
+        padding 0.06rem 0.1rem
         text-overflow ellipsis
         -webkit-line-clamp 1
         display -ms-flexbox
@@ -685,6 +751,7 @@ export default Vue.extend({
             top 60%
             margin-top -0.01rem
             transform translateY(-50%)
+      /* 111111 */
       .sku-wrap
         font-family PingFangSC-Regular
         padding-left 0.1rem
@@ -716,130 +783,703 @@ export default Vue.extend({
             font-size 0.12rem
           .tag
             padding 0 0.1rem 0 0.12rem
-        .van-popup--bottom.van-popup--round
-          border-radius 0 0 0 0
-          .van-action-sheet__content
+      /* info 弹出层 */
+      .buyer-rate
+        /* padding-left 0.1rem */
+        background #fff
+        .b-title
+          padding-left 0.1rem
+          width 100%
+          background-color #fff
+          padding 0.08rem
+          position relative
+          overflow hidden
+          .name
+            display inline-block
+            font-size 0.12rem
+            padding-right 0.04rem
+            font-family STHeitiSC-Medium
+            float left
+            line-height 0.14rem
+            margin-top 0.04rem
+          .rate
+            display inline-block
+            float left
+            margin 0 0.03rem
+            margin-top 0.02rem
+            i
+              display inline-block
+              width 0.12rem
+              height 0.12rem
+              margin-right 0.02rem
+            .full
+              background-size contain
+              background-position 50%
+              background-repeat no-repeat
+              background-image url('~assets/images/wujiao.png')
+          .num
+            display inline-block
+            font-size 0.12rem
+            margin-right 0.04rem
+            line-height 0.25rem
+            font-family STHeitiSC-Medium
+            color #e95656
+            float left
+          .more
+            display inline-block
+            font-size 0.12rem
+            color #999
+            float right
+            padding-right 0.08rem
+            position relative
+            line-height 0.25rem
+            &:after
+              right 0
+              top 50%
+              content ''
+              display block
+              position absolute
+              width 0.08rem
+              height 0.08rem
+              border-width 1px
+              border-style solid
+              border-color #9b9b9b #9b9b9b transparent transparent
+              transform translateY(-50%) rotate(45deg)
+        .tag-content
+          padding 0.07rem 0.07rem 0
+          overflow hidden
+          background #fff
+          .tag-name
             width 100%
-            .sku-pop
+            overflow hidden
+            font-size 0.12rem
+            color #999
+      /*  */
+      .seller-wrap
+        margin-top 0.08rem
+        width 100%
+        padding 0.12rem 0.1rem
+        overflow-x hidden
+        background #fff
+        .seller-info
+          width 100%
+          overflow-x hidden
+          display flex
+          align-items flex-start
+          .pic
+            margin-right 0.04rem
+            width 0.26rem
+            height 0.26rem
+            overflow-x hidden
+            border-radius 100%
+            background-size cover
+          .info
+            flex 1
+            padding-right 0.1rem
+            overflow hidden
+            .name
               width 100%
-              .sku-content
-                /* margin-top: .2rem; */
-                width: 100%;
-                padding: .1rem .15rem 0;
-                background: #fff;
-                .sku-info
-                  width: 100%;
-                  display flex
-                  height: 1.02rem;
-                  margin-bottom: 0.1rem;
-                  .pic
-                    width: 1.02rem;
-                    height: 1.02rem;
-                    border: 1px solid #d8d8d8;
-                    background: #d8d8d8;
-                    border-radius: .02rem;
-                    background-size: cover;
-                  .desc
-                    flex 1
-                    display flex
-                    flex-direction column
-                    span
-                      margin-left .1rem
-                    .price
-                      color: #c33;
-                      height .16rem
-                      font-size .14rem
-                      line-height .16rem
-                      margin-top .15rem
-                    .stock 
-                      color: #646464;
-                      height .16rem
-                      line-height .16rem
-                      font-size .12rem
-                      margin-top .1rem
-                    .choosed
-                      color: #646464;
-                      height .16rem
-                      line-height .16rem
-                      font-size .12rem
-                      margin-top .1rem
-                .spec-wrap
-                  height .76rem
-                  .spec
-                    padding: .08rem 0;
-                    border-top: 1px solid #dedede;
-                    border-bottom: 1px solid #dedede;
-                    .title
-                      font-size: .12rem;
-                      color: #646464;
-                    .options
-                      .selected
-                        background-color: #c33;
-                        color: #fff;
-                        border: none;
-                        position: relative;
-                        border: 1px solid #c33;
-                      .sku
-                        display: inline-block;
-                        background-color: #fff;
-                        padding: 0 .08rem;
-                        line-height: .2rem;
-                        color: #646464;
-                        font-size: .12rem;
-                        text-align: center;
-                        border: 1px solid #646464;
-                        border-radius: .03rem;
-                        margin: .1rem .1rem 0 0;
-                .purchase-amount 
-                  padding: .1rem 0;
-                  margin-bottom: .1rem;
-                  border-bottom: 1px solid #dedede;
-                  height .54rem
-                  display flex
-                  justify-content center
-                  .text
-                    width 50%
-                    height .25rem
-                    line-height .25rem
-                    .title
-                      font-size: .12rem;
-                      color: #646464;
-                  .amount
-                    display flex
-                    width 50%
-                    height .25rem
-                    justify-content flex-end
-                    input
-                      height .25rem
-                      width .25rem
-                    .num
-                      width .38rem
-                      width .25rem
-                      text-align center
-                      line-height .25rem
-              .spec-confirm 
-                margin-left .1rem
-                height .38rem
-                width 100%
-                display flex
-                .half
-                  width 50%
-                  height .38rem
-                  line-height .38rem
-                  text-align center
-                  color #fff
-                span:nth-child(1)
-                  background #f28f25
-                span:nth-child(2)
-                  background #cc3333
-                                  
+              text-overflow ellipsis
+              -webkit-line-clamp 1
+              display box
+              overflow hidden
+              white-space normal
+              font-family STHeitiSC-Medium
+              font-size 0.12rem
+              color #292929
+            .type-coutry
+              width 100%
+              overflow hidden
+              color #999
+              font-size 0.12rem
+              span
+                display inline-block
+                margin-right 0.04rem
+                line-height 0.16rem
+              span i.hign
+                color #e95656
+              span i.num
+                margin-left 0.02rem
+              .contry
+                font-size 0.12rem
+                img
+                  width 0.12rem
+                  height 0.12rem
+                  overflow hidden
+                  display inline-block
+                  float left
+                  border-radius 100%
+                  margin 0.04rem 0.04rem 0 0
+          .btn-follow
+            width 0.6rem
+            overflow hidden
+            display inline-block
+            border 1px solid #c33
+            color #c33
+            border-radius 0.04rem
+            text-align center
+            line-height 0.24rem
+            font-size 0.13rem
+            .follow
+              display inline-block
+              width 0.085rem
+              height 0.085rem
+              position relative
+              vertical-align text-bottom
+              margin-right 0.04rem
+              &:before
+                content ''
+                height 2px
+                width 0.085rem
+                display block
+                background-color #c33
+                border-radius 0.02rem
+                position absolute
+                top 0
+                left 0
+              &:after
+                content ''
+                height 0.02rem
+                width 0.085rem
+                display block
+                background-color #c33
+                border-radius 0.02rem
+                position absolute
+                transform rotate(90deg)
+                top 0
+                left 0
+        .seller-point
+          margin-top 0.1rem
+          width 100%
+          overflow hidden
+          display flex
+          justify-content space-between
+          align-items flex-start
+          font-family PingFangSC-Regular
+          .item
+            flex 1
+            text-align center
+            font-size 0
+            position relative
+            border-right 1px solid hsla(0, 0%, 87%, 0.5)
+            height 0.55rem
+            span
+              font-size 0.12rem
+              width 100%
+              display inline-block
+              overflow hidden
+            .name
+              color #999
+              line-height 0.18rem
+            .val
+              color #051b2b
+              padding-top 0.04rem
+              line-height 0.14rem
+            .hign
+              color #e95656
+            .torst
+              font-size 0.12rem
+              padding-top 0.04rem
+              line-height 0.14rem
+              font-family STHeitiSC-Medium
+            .torst-pop
+              width auto
+              height 0.18rem
+              /* margin-top: .04rem; */
+              display inline-block
+              font-size 0.12rem
+              padding 0 0.02rem
+              border-radius 0.03rem
+              background-color #e95656
+              color #fff
+              position relative
+              overflow inherit
+              &:after
+                content ''
+                display inline-block
+                width 0
+                height 0
+                border-left 0.02rem solid transparent
+                border-right 0.02rem solid transparent
+                position absolute
+                top -5px
+                left 50%
+                transform translate(-50%)
+            .keyval
+              line-height 0.16rem
+              margin-bottom 0.03rem
+              font-size 0.12rem
+              .key
+                display inline-block
+                color #666
+                padding-right 0.06rem
+        .seller-btn
+          width 100%
+          overflow hidden
+          text-align center
+          margin 0.15rem 0 0.08rem
+          a
+            font-family PingFangSC-Regular
+            padding 0 0.1rem
+            display inline-block
+            border-radius 0.05rem
+            line-height 0.24rem
+            border 1px solid #f28f25
+            font-size 0.12rem
+            color #f28f25
+            text-indent 0.14rem
+            position relative
+            &:after
+              position absolute
+              content ''
+              width 0.12rem
+              height 0.1rem
+              background url('~assets/images/dian.png')
+              background-size cover
+              left 0.1rem
+              top 0.08rem
+      .zhengpin
+        width 100%
+        margin 0.08rem 0
+        overflow hidden
+        font-size 0
+        img
+          width 100%
+          display inline-block
+          overflow hidden
+      .image-text-wrap
+        background-color #fff
+        margin-top 0.06rem
+        .title
+          font-size 0.13rem
+          color #292929
+          margin-bottom 0.06rem
+          padding 0.08rem 0 0.08rem 0.1rem
+          border-bottom 1px solid hsla(0, 0%, 87%, 0.5)
+          display inline-block
+          font-family PingFangSC-Medium
+          width 100%
+        .list
+          width 100%
+          overflow hidden
+          padding 0 0.1rem
+          .text
+            word-break break-all
+            color #292929
+            font-size 0.12rem
+            margin-bottom 0.06rem
+            display inline-block
+            width 100%
+          .pics
+            width 100%
+            overflow hidden
+            font-size 0
+            img
+              width 100%
+              display inline-block
+              border 0
+          .keylist
+            width 100%
+            overflow hidden
+            .keyitem
+              width 100%
+              overflow hidden
+              display flex
+              margin-bottom 0.1rem
+              .key
+                margin-left 0.16rem
+                width 0.6rem
+                overflow hidden
+                font-size 0.12rem
+                padding-right 0.08rem
+                color #9b9b9b
+                line-height 0.16rem
+              .value
+                flex 1
+                overflow hidden
+                font-size 0.12rem
+                line-height 0.16rem
+                word-break break-all
+                color #383838
+      .likeproduct
+        width 100%
+        overflow hidden
+        .van-divider
+          height 0.4rem
+          margin 0
+          color #646464
+          background #f5f5f5
+          span
+            background-image url('~assets/images/cnxh2.png')
+            background-repeat no-repeat
+            background-position center center
+            background-size 100% 100%
+            margin-right 0.08rem
+            height 0.16rem
+            width 0.16rem
+        .likeproduct-content
+          width 100%
+          overflow hidden
+          background #f5f5f5
+        /* padding 0 0.625rem */
+  .operate-wrap
+    width 100%
+    height 0.4rem
+    background-color #fff
+    border-top 1px solid #dedede
+    display flex
+    .left
+      width 40%
+      height 0.4rem
+      display flex
+      .collection
+        width 100%
+        height 0.4rem
+        padding-top 0.04rem
+        display flex
+        flex-direction column
+        justify-content center
+        align-items center
+        .icon
+          width 0.14rem
+          height 0.14rem
+        .text
+          color #999
+        .icon-collect
+          background-image url('~assets/images/baiaixin.png')
+          background-size cover
+    .right
+      width 60%
+      height 0.4rem
+      display flex
+    span
+      width 50%
+      height 0.4rem
+    .addCart, .buy
+      text-align center
+      line-height 0.4rem
+      color #fff
+    .addCart
+      background rgba(242, 143, 37, 0.8)
+    .buy
+      background #c33
+</style>
 
-
-
-          .van-action-sheet__cancel
-            font-size 16px
-            line-height 38px
-            color #fff
-            background #c33
-
+<style lang="stylus" scoped>
+.van-divider
+  height 0.3rem
+  margin 0
+  background #f5f5f5
+.van-action-sheet__cancel
+  font-size 16px
+  line-height 38px
+  color #fff
+  background #cc3333
+.van-popup--bottom.van-popup--round
+  border-radius 0 0 0 0
+  .van-action-sheet__content
+    width 100%
+    .coupon-pop
+      background-color #fff
+      border-top 2px solid #000
+      .title
+        width 100%
+        line-height 0.14rem
+        font-size 0.12rem
+        color #292929
+        padding 0.1rem
+      .list
+        width 100%
+        overflow hidden
+        padding 0 0.1rem
+        max-height 0.87rem
+        overflow-y auto
+      .list .item
+        width 100%
+        overflow hidden
+        height 0.76rem
+        display flex
+        margin-bottom 0.1rem
+        font-family PingFangSC-Regular
+        background #fff
+        position relative
+        .item-cart
+          width 0.89rem
+          overflow hidden
+          height 100%
+          background-color #ffa968
+          text-align center
+          color #fff
+          .price
+            margin-top 0.09rem
+            i
+              font-size 0.28rem
+          .rule
+            font-size 0.12rem
+        .info
+          flex 1
+          height 100%
+          padding-left 0.08rem
+          position relative
+          .name
+            width 100%
+            font-size 0.12rem
+            text-overflow ellipsis
+            -webkit-line-clamp 2
+            display -ms-flexbox
+            overflow hidden
+            white-space normal
+            line-height 0.15rem
+            margin-top 0.1rem
+            margin-bottom 0.15rem
+            span
+              background-color #ffa968
+              border-radius 0.02rem
+              color #fff
+              padding 0 0.04rem
+              margin-right 0.04rem
+              font-size 0.12rem
+          .time
+            font-size 0.12rem
+            color #666
+            display inline-block
+          .info-btn
+            position absolute
+            right 0
+            bottom 0.12rem
+            border 1px solid #e95656
+            padding 0.02rem 0.04rem
+            border-radius 0.06rem
+            font-size 0.12rem
+            color #e95656
+            background #fff
+    .logistics-pop.iphonex
+      background-color #fff
+      .item
+        padding 0.15rem
+        overflow hidden
+        text-align center
+        .name
+          display inline-block
+          font-size 0.14rem
+          color #292929
+          position relative
+          &:before
+            right -0.5rem
+          &:before
+            left -0.6rem
+          &:before
+            position absolute
+            content ''
+            width 0.5rem
+            height 1px
+            background-color #e95656
+            top 50%
+          &:after
+            position absolute
+            content ''
+            width 0.5rem
+            height 1px
+            background-color #e95656
+            top 50%
+        .desc
+          padding-top 0.1rem
+          font-size 0.12rem
+          color #666
+          width 100%
+          display inline-block
+      .pic
+        width 100%
+        overflow hidden
+        margin-bottom 0.15rem
+        img
+          display inline-block
+          width 100%
+    .server-pop
+      background-color #fff
+      .server-content
+        padding 0.15rem 0
+        overflow hidden
+        text-align center
+        .title
+          display inline-block
+          font-size 0.14rem
+          color #292929
+          position relative
+          &:before
+            right -0.5rem
+          &:before
+            left -0.6rem
+          &:before
+            position absolute
+            content ''
+            width 0.5rem
+            height 1px
+            background-color #e95656
+            top 50%
+          &:after
+            position absolute
+            content ''
+            width 0.5rem
+            height 1px
+            background-color #e95656
+            top 50%
+        .list
+          width 100%
+          text-align left
+          max-height 1.1rem
+          overflow hidden
+          overflow-y auto
+          padding 0 0.15rem
+          .service-item
+            padding 0 0 0.1rem
+            line-height 0.18rem
+            overflow hidden
+            .name
+              padding-left 0.15rem
+              font-size 0.12rem
+              color #383838
+              position relative
+              &:after
+                position absolute
+                top 0.006rem
+                left 0
+                content ''
+                width 0.14rem
+                height 0.14rem
+                vertical-align middle
+            .tag_btth:after
+              background-image url('~assets/images/pei.png')
+              background-size cover
+            .name.tag_jyps:after
+              background-image url('~assets/images/kefu.png')
+              background-size cover
+            .content
+              padding 0 0.15rem
+              display inline-block
+              width 100%
+              font-size 0.12rem
+              color #9b9b9b
+/* .van-popup--bottom.van-popup--round */
+.infoShow
+  border-radius 0 0 0 0
+  .van-action-sheet__content
+    width 100%
+    .sku-pop
+      width 100%
+      .sku-content
+        /* margin-top: .2rem; */
+        width 100%
+        padding 0.1rem 0.15rem 0
+        background #fff
+        .sku-info
+          width 100%
+          display flex
+          height 1.02rem
+          margin-bottom 0.1rem
+          .pic
+            width 1.02rem
+            height 1.02rem
+            border 1px solid #d8d8d8
+            background #d8d8d8
+            border-radius 0.02rem
+            background-size cover
+          .desc
+            flex 1
+            display flex
+            flex-direction column
+            span
+              margin-left 0.1rem
+            .price
+              color #c33
+              height 0.16rem
+              font-size 0.14rem
+              line-height 0.16rem
+              margin-top 0.15rem
+            .stock
+              color #646464
+              height 0.16rem
+              line-height 0.16rem
+              font-size 0.12rem
+              margin-top 0.1rem
+            .choosed
+              color #646464
+              height 0.16rem
+              line-height 0.16rem
+              font-size 0.12rem
+              margin-top 0.1rem
+        .spec-wrap
+          height 0.76rem
+          .spec
+            padding 0.08rem 0
+            border-top 1px solid #dedede
+            border-bottom 1px solid #dedede
+            .title
+              font-size 0.12rem
+              color #646464
+            .options
+              .selected
+                background-color #c33
+                color #fff
+                border none
+                position relative
+                border 1px solid #c33
+              .sku
+                display inline-block
+                background-color #fff
+                padding 0 0.08rem
+                line-height 0.2rem
+                color #646464
+                font-size 0.12rem
+                text-align center
+                border 1px solid #646464
+                border-radius 0.03rem
+                margin 0.1rem 0.1rem 0 0
+        .purchase-amount
+          padding 0.1rem 0
+          margin-bottom 0.1rem
+          border-bottom 1px solid #dedede
+          height 0.54rem
+          display flex
+          justify-content center
+          .text
+            width 50%
+            height 0.25rem
+            line-height 0.25rem
+            .title
+              font-size 0.12rem
+              color #646464
+          .amount
+            display flex
+            width 50%
+            height 0.25rem
+            justify-content flex-end
+            input
+              height 0.25rem
+              width 0.25rem
+            .num
+              width 0.38rem
+              width 0.25rem
+              text-align center
+              line-height 0.25rem
+      .spec-confirm
+        margin-left 0.1rem
+        height 0.38rem
+        width 100%
+        display flex
+        .half
+          width 50%
+          height 0.38rem
+          line-height 0.38rem
+          text-align center
+          color #fff
+        span:nth-child(1)
+          background #f28f25
+        span:nth-child(2)
+          background #cc3333
+  .van-action-sheet__cancel
+    font-size 16px
+    line-height 38px
+    color #fff
+    background #c33
 </style>

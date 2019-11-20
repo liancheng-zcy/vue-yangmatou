@@ -1,3 +1,15 @@
 1、style里的scoped是局部的，想要里面的样式穿透出去？？
   1、穿透的写法
   2、可以写两个stylus,一个是局部，一个不是局部
+
+2、module
+  vue模块
+  注意点：
+    写在根store和分模块store里的Mutations的方法不加不给子store加命名空间，两个方法都会调用。
+
+    命名空间：
+  this.$store.commit('scroll/setPosition',{
+    传参
+  })
+  scroll命名空间（子store名），setPosition子store名
+  

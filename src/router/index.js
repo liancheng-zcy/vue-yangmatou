@@ -32,7 +32,7 @@ const routes = [
     component: community
   },
   {
-    path: '/detail',
+    path: '/detail/:id',
     name: 'detail',
     component: detail,
   },
