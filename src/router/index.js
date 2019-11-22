@@ -7,6 +7,7 @@ import community from 'pages/community/community'
 import myorder from 'pages/myorder/myorder'
 import account from 'pages/account/account'
 import topic from 'pages/topic/topic'
+import communityDetail from 'pages/community/communityDetail'
 
 Vue.use(VueRouter)
 const routes = [
@@ -27,9 +28,15 @@ const routes = [
     ]
   },
   {
-    path: '/note/community',
+    path:'/note/community',
     name:'community',
-    component: community
+    component: community,
+  },
+  {
+    path:'/note/community/communityDetail/:id',
+    name:'communityDetail',
+    component:communityDetail,
+    meta: { requiresAuth: true }
   },
   {
     path: '/detail/:id',

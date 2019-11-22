@@ -8,8 +8,6 @@ const state = {
 
 const mutations = {
   [SETPRODUCTDETAIL](state, data ){
-    
-    
     state.productDetail = data
   }
 }

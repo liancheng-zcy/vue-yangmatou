@@ -26,7 +26,6 @@
                 <i>¥&nbsp;</i>{{productDetail.price}}
               </span>
             </div>
-
             <div class="product-activity">
               <span class="name">活动价￥65，黑五狂欢价</span>
               <span class="day">11月22日00:00准时开始</span>
@@ -429,7 +428,6 @@ export default Vue.extend({
           productId.pic
         );
       }
-
       if (detailList[i].title == "买家须知") {
         this.buyer.push(detailList[i]);
       }
@@ -486,7 +484,7 @@ export default Vue.extend({
   .detail-wrap
     width 100%
     height 100%
-    overflow auto
+    overflow hidden
     .detail-content
       width 100%
       .swiper-wrap

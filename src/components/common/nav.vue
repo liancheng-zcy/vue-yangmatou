@@ -1,7 +1,7 @@
 <template>
     <div id="load-waptopbar" class="loadwaptopbar">
       <div class="loadtopnav">
-        <div id="load-ymatou-logo" v-if="navType == 'detail' || navType == 'community'">
+        <div id="load-ymatou-logo" v-if="navType == 'detail' || navType == 'community' || navType == 'communityDetail'">
           <a>
             <img src="~assets/images/logo.png" alt="logo" />
           </a>
@@ -14,15 +14,15 @@
             <span id="loadwaptopbar-community">社区</span>
           </a>
         </div>
-        <div class="navRight" id="load-nav-content" v-if="navType == 'community'">
+        <div class="navRight" id="load-nav-content" v-if="navType == 'community' || navType == 'communityDetail'">
           <a @click="homeClick">
             <span id="loadwaptopbar-home">首页</span>
           </a>
           <a @click="communityClick">
-            <span id="loadwaptopbar-community" class="active">社区</span>
+            <span id="loadwaptopbar-community" :class="navType == 'community' ? 'active':''">社区</span>
           </a>
         </div>
-        <div class="icon-list">
+        <div class="icon-list" v-if="navType == 'detail' || navType == 'home'">
           <a id="load-shopcart-icon" @click="cartClick">
             <img src="~assets/images/car.png" alt="购物车" />
           </a>
@@ -33,10 +33,8 @@
             <img src="~assets/images/wode.png" alt="个人中心" />
           </a>
         </div>
-
       </div>
     </div>
- 
 </template>
 
 <script>

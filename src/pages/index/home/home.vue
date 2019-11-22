@@ -139,10 +139,6 @@ export default Vue.extend({
       click: true,
       probeType: 2,
       scrollX: true
-      // scrollbar: {
-      //   fade: true,
-      //   interactive: false // 1.8.0 新增
-      // },
     });
   }
 });
@@ -157,7 +153,6 @@ export default Vue.extend({
     height 100%
     font-size 0.16rem
     overflow hidden
-  
     .banner-container
       height 1.1rem
       width 100%
