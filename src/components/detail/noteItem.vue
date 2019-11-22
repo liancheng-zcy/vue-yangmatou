@@ -29,12 +29,12 @@ import Vue from "vue";
 export default Vue.extend({
   data(){
     return{
-      bg:'https://s1.ymatou.com/homem/images/placeholder-bb7773481a.png'
+     
     }
   },
   props:['noteValue'],
   mounted () {
-    // console.log(this.noteValue)
+    //  console.log(this.noteValue)
   }
 });
 </script>

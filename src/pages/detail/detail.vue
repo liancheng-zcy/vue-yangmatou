@@ -19,11 +19,11 @@
           <div class="productinfo-content">
             <div class="product-name">
               <span class="tag">包邮包税</span>
-              <span class="name">【30片】韩国FHD血橙面膜急救补水保湿滋养睡眠修护舒缓收缩毛孔</span>
+              <span class="name">{{productDetail.name}}</span>
             </div>
             <div class="product-price">
               <span class="interval-price">
-                <i>¥&nbsp;</i>75
+                <i>¥&nbsp;</i>{{productDetail.price}}
               </span>
             </div>
 
@@ -74,26 +74,7 @@
           <!-- sku弹出层 -->
         </div>
         <!-- 用户评价 -->
-        <div class="buyer-rate">
-          <van-divider :style="{ color: '#646464;', borderColor: '#cccccc', padding: '0 .5rem' }">
-            <span></span>评价
-          </van-divider>
-          <div class="b-title">
-            <span class="name">买家评价</span>
-            <span class="rate">
-              <i class="full"></i>
-              <i class="full"></i>
-              <i class="full"></i>
-              <i class="full"></i>
-              <i class="full"></i>
-            </span>
-            <span class="num">4.7</span>
-            <span class="more">查看全部456条</span>
-          </div>
-          <div class="tag-content">
-            <div class="tag-name">购买过该商品的用户认为</div>
-          </div>
-        </div>
+      
         <!-- 用户评价后续 -->
         <!-- <div class="note-list">
           <div class="note-list-content">
@@ -153,17 +134,17 @@
           <div class="seller-info">
             <div
               class="pic lazyload transition"
-              style="opacity: 1; background-image: url(&quot;http://pic1.ymatou.com/G02/M08/17/20/CgvUBFsQ7BOAN3RJAADcDf-V3R4356_1_1_m.jpg&quot;);"
+              :style= "{ 'backgroundImage':' url(' + productDetail.sellerInfo.avatarUrl +')'}"
             ></div>
             <div class="info">
-              <div class="name">首尔姐妹花</div>
+              <div class="name">{{productDetail.sellerInfo.name}}</div>
               <div class="type-coutry">
                 <span class="selle-type">
                   <i>超级买手</i>
-                  <i class="num hign">4.7</i>
+                  <i class="num hign">{{productDetail.sellerInfo.sellerDSR.DSRPoint.point}}</i>
                 </span>
                 <span class="contry">
-                  <img src="http://img.ymatou.com/app/flag/circle/Korea.png" />韩国
+                  <img :src="productDetail.sellerInfo.countryIconUrl" />{{productDetail.sellerInfo.countryName}}
                 </span>
               </div>
             </div>
@@ -200,7 +181,7 @@
               </span>
             </div>
           </div>
-          <div class="seller-btn">
+          <div class="seller-btn" :seller-id = 'productDetail.sellerInfo.id'>
             <a href="//m.ymatou.com/sellerhome/forBuyerApp/sellerHome?SellerId=20927755">进店看看</a>
           </div>
         </div>
@@ -420,7 +401,8 @@ export default Vue.extend({
       buyer: [],
       parameter: [],
       introduction: [],
-      handBuyer: []
+      handBuyer: [],
+      productDetail:[]
     };
   },
   watch: {
@@ -430,6 +412,7 @@ export default Vue.extend({
     }
   },
   async mounted() {
+    // console.log(this.$store.state.Products.productDetail)
     let productId = this.$route.params.id;
     let result = await get({
       url: `/ajax/item/api/getProductDescriptionInfo?`,
@@ -443,7 +426,7 @@ export default Vue.extend({
         this.images = detailList[i].picList;
       } else {
         this.images.push(
-          "https://s1.ymatou.com/homem/images/placeholder-bb7773481a.png"
+          productId.pic
         );
       }
 
@@ -463,6 +446,9 @@ export default Vue.extend({
         this.handBuyer.push(detailList[i]);
       }
     }
+
+    this.productDetail = this.$store.state.Products.productDetail
+    console.log(this.productDetail)
   },
   methods: {
     onChange(index) {
@@ -489,6 +475,9 @@ export default Vue.extend({
 
 <style lang = "stylus" scoped>
 /* @import '~assets/stylus/border.styl' */
+*{
+  touch-action: none;
+}
 .wrap
   width 100%
   height 100%
@@ -784,76 +773,7 @@ export default Vue.extend({
           .tag
             padding 0 0.1rem 0 0.12rem
       /* info 弹出层 */
-      .buyer-rate
-        /* padding-left 0.1rem */
-        background #fff
-        .b-title
-          padding-left 0.1rem
-          width 100%
-          background-color #fff
-          padding 0.08rem
-          position relative
-          overflow hidden
-          .name
-            display inline-block
-            font-size 0.12rem
-            padding-right 0.04rem
-            font-family STHeitiSC-Medium
-            float left
-            line-height 0.14rem
-            margin-top 0.04rem
-          .rate
-            display inline-block
-            float left
-            margin 0 0.03rem
-            margin-top 0.02rem
-            i
-              display inline-block
-              width 0.12rem
-              height 0.12rem
-              margin-right 0.02rem
-            .full
-              background-size contain
-              background-position 50%
-              background-repeat no-repeat
-              background-image url('~assets/images/wujiao.png')
-          .num
-            display inline-block
-            font-size 0.12rem
-            margin-right 0.04rem
-            line-height 0.25rem
-            font-family STHeitiSC-Medium
-            color #e95656
-            float left
-          .more
-            display inline-block
-            font-size 0.12rem
-            color #999
-            float right
-            padding-right 0.08rem
-            position relative
-            line-height 0.25rem
-            &:after
-              right 0
-              top 50%
-              content ''
-              display block
-              position absolute
-              width 0.08rem
-              height 0.08rem
-              border-width 1px
-              border-style solid
-              border-color #9b9b9b #9b9b9b transparent transparent
-              transform translateY(-50%) rotate(45deg)
-        .tag-content
-          padding 0.07rem 0.07rem 0
-          overflow hidden
-          background #fff
-          .tag-name
-            width 100%
-            overflow hidden
-            font-size 0.12rem
-            color #999
+      
       /*  */
       .seller-wrap
         margin-top 0.08rem

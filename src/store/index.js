@@ -3,6 +3,9 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+import Products from './car/Products'
+import Car from './car/Car'
+
 export default new Vuex.Store({
   state: {
     isSticky:false
@@ -15,5 +18,7 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
+    Products,
+    Car
   }
 })

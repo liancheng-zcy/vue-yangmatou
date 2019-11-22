@@ -1,17 +1,25 @@
 <template>
     <div id="load-waptopbar" class="loadwaptopbar">
       <div class="loadtopnav">
-        <div id="load-ymatou-logo" v-if="navType == 'detail'">
+        <div id="load-ymatou-logo" v-if="navType == 'detail' || navType == 'community'">
           <a>
             <img src="~assets/images/logo.png" alt="logo" />
           </a>
         </div>
         <div class="nav" id="load-nav-content" v-if="navType == 'home'">
-          <a  c>
+          <a @click="homeClick">
             <span id="loadwaptopbar-home" class="active">首页</span>
           </a>
           <a @click="communityClick">
             <span id="loadwaptopbar-community">社区</span>
+          </a>
+        </div>
+        <div class="navRight" id="load-nav-content" v-if="navType == 'community'">
+          <a @click="homeClick">
+            <span id="loadwaptopbar-home">首页</span>
+          </a>
+          <a @click="communityClick">
+            <span id="loadwaptopbar-community" class="active">社区</span>
           </a>
         </div>
         <div class="icon-list">
@@ -25,6 +33,7 @@
             <img src="~assets/images/wode.png" alt="个人中心" />
           </a>
         </div>
+
       </div>
     </div>
  
@@ -78,6 +87,22 @@ export default Vue.extend({
           .nav
             display inline-block
             float left
+            margin-right 0.08rem
+            a
+              display inline-block
+              padding 0 0.08rem
+            span
+              display inline-block
+              line-height 0.24rem
+              padding-top 0.07rem
+              color #646464
+              font-size 0.12rem
+            span.active
+              color #383838
+              border-bottom 3px solid #cc3333
+          .navRight
+            display inline-block
+            float right
             margin-right 0.08rem
             a
               display inline-block

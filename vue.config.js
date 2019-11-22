@@ -8,6 +8,9 @@ module.exports = {
     .set('assets',path.resolve(__dirname,'./src/assets/'))
     .set('pages',path.resolve(__dirname,'./src/pages'))
     .set('utils',path.resolve(__dirname,'./src/utils'))
+    .set('store',path.resolve(__dirname,'./src/store'))
+    .set('node_modules',path.resolve(__dirname,'./node_modules'))
+    
   },
   devServer: {
     proxy: {

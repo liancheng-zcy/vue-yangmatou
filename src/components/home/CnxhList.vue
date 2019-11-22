@@ -7,7 +7,6 @@
   </div>
 </template>
 
-
 <script>
 import Vue from "vue";
 import Cnxhitem from "components/home/Cnxhitem";
@@ -40,12 +39,11 @@ export default Vue.extend({
 
     let bScroll = new BScroll(`.${type}`, {
       pullUpLoad: true,
-      
       probeType: 2,
       preventDefault:false
     });
-    let num = 1;
-    let size = 30;
+    let num = 2;
+    let size = 20;
     bScroll.on("pullingUp", async () => {
       if (num < Math.ceil(result.data.likeProduct.total / size)) {
         let moreResult = await get({

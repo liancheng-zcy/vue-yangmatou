@@ -23,8 +23,9 @@
 
 <script>
 import Vue from "vue";
-
-export default Vue.extend({
+import { COMMITPRODUCTDETAIL } from 'store/car/action-type.js'
+import store from 'node_modules/store/dist/store.legacy'
+export default {
   data(){
     return{
 
@@ -37,9 +38,15 @@ export default Vue.extend({
       let id = this.CnxhValue.id
       let timestamp = new Date().getTime();//可以用个时间戳解决跳转同一个路由的情况
       this.$router.push({path:`/detail/${id}`})
+      this.$store.dispatch('Products/' + COMMITPRODUCTDETAIL,{ CnxhValue:this.CnxhValue })
+      store.set('productDetail', this.CnxhValue)
     }
+    
+  },
+  mounted () {
+    // console.log(this.$store.state.Products.productDetail)
   }
-});
+}
 </script>
 
 <style lang = "stylus" scoped>
