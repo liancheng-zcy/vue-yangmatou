@@ -1,7 +1,7 @@
 import {SETPRODUCTDETAIL , COMMITPRODUCTDETAIL } from 'store/car/action-type.js'
 import store from 'node_modules/store/dist/store.legacy'
 let productDetails = store.get('productDetail')
-console.log()
+
 const state = {
   productDetail:productDetails
 }

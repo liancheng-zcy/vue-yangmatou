@@ -1,5 +1,5 @@
 <template>
-  <div class="note-item">
+  <div ref="myCom" class="note-item" :productId = "noteValue.prodId" :evaluationid = "noteValue.id" @click="comClick">
     <div class="content">
       <div class="info">
         <div class="buyer">
@@ -27,14 +27,30 @@
 import Vue from "vue";
 
 export default Vue.extend({
+
   data(){
     return{
      
     }
   },
   props:['noteValue'],
+  methods:{
+    comClick(){
+      //  let id = this.$refs['myCom'].evaluationid
+       let id = this.noteValue.id
+      this.$router.push({
+        path:`/detail/commpent/${id}`,
+        query:{
+          evaluationid:id,
+          productId:this.noteValue.prodId
+        }
+        })
+    }
+  },
   mounted () {
-    //  console.log(this.noteValue)
+   
+    
+   
   }
 });
 </script>

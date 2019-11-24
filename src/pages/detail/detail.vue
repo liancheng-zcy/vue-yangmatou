@@ -23,7 +23,8 @@
             </div>
             <div class="product-price">
               <span class="interval-price">
-                <i>¥&nbsp;</i>{{productDetail.price}}
+                <i>¥&nbsp;</i>
+                {{productDetail.price}}
               </span>
             </div>
             <div class="product-activity">
@@ -73,7 +74,7 @@
           <!-- sku弹出层 -->
         </div>
         <!-- 用户评价 -->
-      
+
         <!-- 用户评价后续 -->
         <!-- <div class="note-list">
           <div class="note-list-content">
@@ -133,17 +134,18 @@
           <div class="seller-info">
             <div
               class="pic lazyload transition"
-              :style= "{ 'backgroundImage':' url(' + productDetail.sellerInfo.avatarUrl +')'}"
+              :style="{ 'backgroundImage':' url(' + sellerInfo.avatarUrl +')'}"
             ></div>
             <div class="info">
-              <div class="name">{{productDetail.sellerInfo.name}}</div>
+              <div class="name">{{sellerInfo.name}}</div>
               <div class="type-coutry">
                 <span class="selle-type">
                   <i>超级买手</i>
-                  <i class="num hign">{{productDetail.sellerInfo.sellerDSR.DSRPoint.point}}</i>
+                  <i class="num hign">{{point}}</i>
                 </span>
                 <span class="contry">
-                  <img :src="productDetail.sellerInfo.countryIconUrl" />{{productDetail.sellerInfo.countryName}}
+                  <img :src="sellerInfo.countryIconUrl" />
+                  {{sellerInfo.countryName}}
                 </span>
               </div>
             </div>
@@ -180,7 +182,7 @@
               </span>
             </div>
           </div>
-          <div class="seller-btn" :seller-id = 'productDetail.sellerInfo.id'>
+          <div class="seller-btn" :seller-id="sellerInfo.id">
             <a href="//m.ymatou.com/sellerhome/forBuyerApp/sellerHome?SellerId=20927755">进店看看</a>
           </div>
         </div>
@@ -205,8 +207,9 @@
                 :key="index + picValue"
               >
                 <img
+                  data-src="http://pic1.ymatou.com/G01/M03/87/C0/CgzUB13VYE2AEzv1AAU5Y0_2qiA74_105_108_w_o.jpeg"
                   :src="picValue"
-                  style="height: 312.427px; opacity: 1;"
+                  style="opacity: 1;"
                   class="lazyload transition"
                 />
               </div>
@@ -232,7 +235,12 @@
               >{{introduction[0].title}}</van-divider>
               <div class="text">{{introduction[0].text}}</div>
               <div class="pics" v-for="(pic,index) in introduction[0].picList" :key="index + pic">
-                <img :src="pic" style="height: 390.533px; opacity: 1;" class="lazyload transition" />
+                <img
+                  :src="pic"
+                  data-src="http://pic1.ymatou.com/G01/M03/87/C0/CgzUB13VYE2AEzv1AAU5Y0_2qiA74_105_108_w_o.jpeg"
+                  style=" opacity: 1;"
+                  class="lazyload transition"
+                />
               </div>
             </div>
             <div class="item" v-if="handBuyer.length > 0">
@@ -241,7 +249,12 @@
               >{{handBuyer[0].title}}</van-divider>
               <div class="text">{{handBuyer[0].text}}</div>
               <div class="pics" v-for="(pic,index) in handBuyer[0].picList" :key="pic+index">
-                <img :src="pic" style="height: 694.84px; opacity: 1;" class="lazyload transition" />
+                <img
+                  :src="pic"
+                  data-src="http://pic1.ymatou.com/G01/M03/87/C0/CgzUB13VYE2AEzv1AAU5Y0_2qiA74_105_108_w_o.jpeg"
+                  style=" opacity: 1;"
+                  class="lazyload transition"
+                />
               </div>
             </div>
           </div>
@@ -401,7 +414,9 @@ export default Vue.extend({
       parameter: [],
       introduction: [],
       handBuyer: [],
-      productDetail:[]
+      productDetail: [],
+      sellerInfo: {},
+      point: 0 //评分
     };
   },
   watch: {
@@ -411,7 +426,6 @@ export default Vue.extend({
     }
   },
   async mounted() {
-    // console.log(this.$store.state.Products.productDetail)
     let productId = this.$route.params.id;
     let result = await get({
       url: `/ajax/item/api/getProductDescriptionInfo?`,
@@ -424,9 +438,7 @@ export default Vue.extend({
       if (detailList[i].title == "商品介绍") {
         this.images = detailList[i].picList;
       } else {
-        this.images.push(
-          productId.pic
-        );
+        this.images.push(productId.pic);
       }
       if (detailList[i].title == "买家须知") {
         this.buyer.push(detailList[i]);
@@ -445,8 +457,9 @@ export default Vue.extend({
       }
     }
 
-    this.productDetail = this.$store.state.Products.productDetail
-    console.log(this.productDetail)
+    this.productDetail = this.$store.state.Products.productDetail;
+    this.sellerInfo = this.$store.state.Products.productDetail.sellerInfo;
+    this.point = this.$store.state.Products.productDetail.sellerInfo.sellerDSR.DSRPoint.point;
   },
   methods: {
     onChange(index) {
@@ -473,9 +486,8 @@ export default Vue.extend({
 
 <style lang = "stylus" scoped>
 /* @import '~assets/stylus/border.styl' */
-*{
-  touch-action: none;
-}
+*
+  touch-action none
 .wrap
   width 100%
   height 100%
@@ -771,7 +783,6 @@ export default Vue.extend({
           .tag
             padding 0 0.1rem 0 0.12rem
       /* info 弹出层 */
-      
       /*  */
       .seller-wrap
         margin-top 0.08rem

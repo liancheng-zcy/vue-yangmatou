@@ -5,15 +5,16 @@
     <div class="comDetail-wrap">
       <div class="comDetail-content">
         <!-- 用户头部信息 -->
-        <section class="pv-header">
-          <section class="user-pannel">
+        <section class="pv-header" >
+          <section class="user-pannel" >
             <div
+              :userId = "newDeatil.userId"
               class="user-photo"
-              style="background-image: url(http://staticontent.ymatou.com/app/userlogo/mj.jpg);"
+              :style = "{ 'backgroundImage':' url(' + newDeatil.userLogo +')'}"
             ></div>
             <div class="user-detail">
               <div class="user-name-level">
-                <span class="user-name">最好的天使</span>
+                <span class="user-name">{{newDeatil.username}}</span>
                 <span class="user-level user-level-l">
                   V
                   <i>2</i>
@@ -30,13 +31,28 @@
             </div>
           </section>
         </section>
+        <!-- 笔记内容 -->
         <section class="note-pannel">
           <!--普通/视频文本-->
           <div class="detail-text">
-            <p>种草很久，下单后，邮寄平台鉴定，是正品哦！靠谱的店家，以后锁定你家啦！</p>
+            <p>{{newDeatil.content}}</p>
           </div>
           <!--图片区域(普通)-->
           <div class="new-pic-box">
+            <div class="img-wrapper" 
+            v-for="(img,index) in newDeatil.allPic"
+            :key="index"
+            >
+              <img
+                class
+                data-src="http://pic1.ymatou.com/G01/M03/87/C0/CgzUB13VYE2AEzv1AAU5Y0_2qiA74_105_108_w_o.jpeg"
+                :src="img.Pic"
+                style="opacity: 1;"
+              />
+            </div>
+          </div>
+          <!--图片区域(普通)-->
+          <!-- <div class="new-pic-box">
             <div class="img-wrapper">
               <img
                 class
@@ -45,18 +61,7 @@
                 style="opacity: 1;"
               />
             </div>
-          </div>
-          <!--图片区域(普通)-->
-          <div class="new-pic-box">
-            <div class="img-wrapper">
-              <img
-                class
-                data-src="http://pic1.ymatou.com/G01/M03/87/C0/CgzUB13VYE2AEzv1AAU5Y0_2qiA74_105_108_w_o.jpeg"
-                src="http://pic1.ymatou.com/G01/M03/87/C0/CgzUB13VYE2AEzv1AAU5Y0_2qiA74_105_108_w_o.jpeg"
-                style="opacity: 1;"
-              />
-            </div>
-          </div>
+          </div> -->
         </section>
         <!-- 商家信息 -->
         <section class="involved-pannel" style="display: block;">
@@ -67,26 +72,27 @@
               <div class="seller-detail">
                 <div class="seller-name">
                   购自于洋码头买手:
-                  <span>优集馆海外专营店</span>
+                  <span>{{SellerResult.SellerLoginId}}</span>
                 </div>
               </div>
             </div>
             <!--商品信息-->
-            <div class="goods-info">
+            <div class="goods-info" :ProductId = "SellerProInfo.ProductId">
+             
               <div class="goods-pic">
                 <img
                   class
                   data-src="http://pic1.ymatou.com/G02/shangou/M09/39/D2/CgzUDF2NmxuARDkkAAY1itlSlJQ627_1_1_n_w_l.jpg"
-                  src="http://pic1.ymatou.com/G02/shangou/M09/39/D2/CgzUDF2NmxuARDkkAAY1itlSlJQ627_1_1_n_w_l.jpg"
+                  :src="SellerProInfo.ProductPic"
                   style="opacity: 1;"
                 />
               </div>
               <div class="goods-detail">
-                <div class="goods-name">OZWEAR UGG豆豆鞋 防泼水羊毛内里内增高女鞋多色OB300/OZW145</div>
+                <div class="goods-name">{{SellerProInfo.ProductDes}}</div>
                 <div class="goods-price">
                   <div class="price">
                     <i>¥</i>
-                    249
+                    {{SellerProInfo.Price}}
                   </div>
                   <div class="involved-collect-btn collect-btn version-1" data-iscollect="false">
                     <i class="like-icon-base like-icon-off"></i>收藏
@@ -128,72 +134,7 @@
           </div>
           <div class="rg-list">
             <div class="scroll-wrapper">
-              <ul>
-                <li class="product">
-                  <div class="product-pic-body">
-                    <img
-                      class="product-pic"
-                      data-src="http://pic1.ymatou.com/G02/shangou/M04/06/79/CgzUCl2m4HuAbeWDAA39hUzrwE0922_1_1_n_w_lb.JPG"
-                      src="http://pic1.ymatou.com/G02/shangou/M04/06/79/CgzUCl2m4HuAbeWDAA39hUzrwE0922_1_1_n_w_lb.JPG"
-                      style="opacity: 1;"
-                    />
-                  </div>
-                  <div class="product-tip">
-                    <p class="product-title">黑五 澳洲Ozwear花语羊毛豆豆鞋O275/Divanna小蜜蜂豆豆鞋DA0032</p>
-                    <span>
-                      <em>¥</em> 238
-                    </span>
-                  </div>
-                </li>
-                <li class="product">
-                  <div class="product-pic-body">
-                    <img
-                      class="product-pic"
-                      data-src="http://pic1.ymatou.com/G02/shangou/M04/06/79/CgzUCl2m4HuAbeWDAA39hUzrwE0922_1_1_n_w_lb.JPG"
-                      src="http://pic1.ymatou.com/G02/shangou/M04/06/79/CgzUCl2m4HuAbeWDAA39hUzrwE0922_1_1_n_w_lb.JPG"
-                      style="opacity: 1;"
-                    />
-                  </div>
-                  <div class="product-tip">
-                    <p class="product-title">黑五 澳洲Ozwear花语羊毛豆豆鞋O275/Divanna小蜜蜂豆豆鞋DA0032</p>
-                    <span>
-                      <em>¥</em> 238
-                    </span>
-                  </div>
-                </li>
-                <li class="product">
-                  <div class="product-pic-body">
-                    <img
-                      class="product-pic"
-                      data-src="http://pic1.ymatou.com/G02/shangou/M04/06/79/CgzUCl2m4HuAbeWDAA39hUzrwE0922_1_1_n_w_lb.JPG"
-                      src="http://pic1.ymatou.com/G02/shangou/M04/06/79/CgzUCl2m4HuAbeWDAA39hUzrwE0922_1_1_n_w_lb.JPG"
-                      style="opacity: 1;"
-                    />
-                  </div>
-                  <div class="product-tip">
-                    <p class="product-title">黑五 澳洲Ozwear花语羊毛豆豆鞋O275/Divanna小蜜蜂豆豆鞋DA0032</p>
-                    <span>
-                      <em>¥</em> 238
-                    </span>
-                  </div>
-                </li>
-                <li class="product">
-                  <div class="product-pic-body">
-                    <img
-                      class="product-pic"
-                      data-src="http://pic1.ymatou.com/G02/shangou/M04/06/79/CgzUCl2m4HuAbeWDAA39hUzrwE0922_1_1_n_w_lb.JPG"
-                      src="http://pic1.ymatou.com/G02/shangou/M04/06/79/CgzUCl2m4HuAbeWDAA39hUzrwE0922_1_1_n_w_lb.JPG"
-                      style="opacity: 1;"
-                    />
-                  </div>
-                  <div class="product-tip">
-                    <p class="product-title">黑五 澳洲Ozwear花语羊毛豆豆鞋O275/Divanna小蜜蜂豆豆鞋DA0032</p>
-                    <span>
-                      <em>¥</em> 238
-                    </span>
-                  </div>
-                </li>
-              </ul>
+              <NoteProductList></NoteProductList>
             </div>
           </div>
         </section>
@@ -206,25 +147,48 @@
 import Vue from "vue";
 import Ad from "components/common/ad.vue";
 import Nav from "components/common/nav";
+import NoteProductList from "components/community/noteProductList"
 import BScroll from "better-scroll";
+import { get } from "utils/http.js"
 export default Vue.extend({
   data() {
     return {
-      navType: "communityDetail"
+      navType: "communityDetail",
+      newDeatil:{},
+      SellerResult:{},
+      SellerProInfo:{}
     };
   },
   components: {
     Ad,
-    Nav
+    Nav,
+    NoteProductList
   },
-  mounted() {
+ async mounted() {
     let bScroll = new BScroll(`.comDetail-wrap`, {
       pullUpLoad: true,
       probeType: 2,
       preventDefault:false
     });
+
+    this.newDeatil = this.$route.query
+    let NoteId = ~~this.newDeatil.noteId
+    let UserId = ~~this.newDeatil.userId
+    console.log(NoteId,UserId)
+    let SellerRes = await get({
+      url:'/ajax/note/api/GetSellerInfoByNoteIdAsync?',
+      params:{
+        NoteId:NoteId,
+        UserId:UserId,
+        Channel:'3'
+      }
+    })
+    this.SellerResult = SellerRes.data.Result
+    this.SellerProInfo = SellerRes.data.Result.Product
+    console.log(this.SellerProInfo)
+
+    
     bScroll.on("scroll", () => {
-     
       if (bScroll.y < -50) {
         this.$store.commit("setSticky", true);
       } else {
@@ -468,47 +432,7 @@ export default Vue.extend({
           .scroll-wrapper 
             overflow-x: auto;
             overflow-y: hidden;
-            ul 
-              width: 100%;
-              white-space: nowrap;
-              .product:first-child 
-                 margin-left: .08rem;
-              .product 
-                position: relative;
-                display: inline-block;
-                width: 1.12rem;
-                margin-right .05rem
-                vertical-align: top;
-                .product-pic-body 
-                  width: 1.12rem;
-                  height: 1.12rem;
-                  background: url('~assets/images/ybg.png') center center no-repeat;
-                  background-size: contain;
-                  overflow: hidden;
-                  .product-pic 
-                    width: 1.12rem;
-                .product-tip 
-                  text-align: left;
-                  .product-title 
-                    font-size: .1rem;
-                    color: #383838;
-                    line-height: .15rem;
-                    display: -webkit-box;
-                    white-space: normal;
-                    word-break: break-word;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    -webkit-line-clamp: 2;
-                    -webkit-box-orient: vertical;
-                    word-wrap: break-word;
-                    word-break: break-all;
-                    margin: .05rem 0 .08rem;
-                  span 
-                    display: block;
-                    font-size: .13rem;
-                    height: .14rem;
-                    line-height: .15rem;
-                    color: #c33;
+            
 
 
 

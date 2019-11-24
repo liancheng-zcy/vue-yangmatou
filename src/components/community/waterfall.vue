@@ -170,18 +170,22 @@ export default Vue.extend({
         name:`communityDetail`,
         params:{ 
           id: value.noteId,
+          // content:value.content, 
+          // allPic:value.allPic,
+          // noteId:value.noteId,
+          // userId:value.userId,
+          // username:value.username,
+          // userLogo:value.userLogo
+        },
+        query:{
+          id: value.noteId,
           content:value.content, 
           allPic:value.allPic,
           noteId:value.noteId,
           userId:value.userId,
           username:value.username,
           userLogo:value.userLogo
-        },
-        // query:{
-        //   noteId:value.noteId,
-        //   userId:value.userId,
-        //   username:value.username,
-        //   },
+          },
         })
     }
   },

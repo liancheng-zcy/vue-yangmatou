@@ -59,7 +59,6 @@ export default Vue.extend({
         await this.$nextTick();
         bScroll.refresh();
         this.lodaing = 'true'
-        console.log(this.lodaing)
       } else {
         Toast({
           message: "我也是有底线的~",
@@ -69,7 +68,6 @@ export default Vue.extend({
       }
       bScroll.finishPullUp();
       this.lodaing = 'false'
-       console.log(this.lodaing)
     });
 
     bScroll.on("scroll", () => {

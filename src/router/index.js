@@ -8,6 +8,7 @@ import myorder from 'pages/myorder/myorder'
 import account from 'pages/account/account'
 import topic from 'pages/topic/topic'
 import communityDetail from 'pages/community/communityDetail'
+import commpent from 'pages/detail/commpent'
 
 Vue.use(VueRouter)
 const routes = [
@@ -42,6 +43,11 @@ const routes = [
     path: '/detail/:id',
     name: 'detail',
     component: detail,
+  },
+  {
+    path: '/detail/commpent/:id',
+    name: 'commpent',
+    component: commpent,
   },
   {
     path: '/myorder',

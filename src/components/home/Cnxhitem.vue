@@ -44,7 +44,7 @@ export default {
     
   },
   mounted () {
-    // console.log(this.$store.state.Products.productDetail)
+   
   }
 }
 </script>
@@ -74,10 +74,10 @@ export default {
       padding 0.08rem 0
       .name
         width 100%
-        height .3rem
+        /* height .3rem */
         font-size 0.12rem
         color #383838
-        line-height 0.14rem
+        line-height 0.16rem
         overflow hidden
         text-overflow ellipsis
         display -webkit-box

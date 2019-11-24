@@ -20,8 +20,13 @@
     </div>
     <div class="note-list">
       <div class="note-list-content">
-        <noteItem v-for="value in commentList" :key="value.id" :noteValue="value"></noteItem>
-        <div class="note-more">
+        <div v-if="commentList.length > 0">
+        <noteItem  v-for="value in commentList" :key="value.id" :noteValue="value"></noteItem>
+        </div>
+        <div class="noteItem-block" v-else>
+          暂无评论...
+        </div>
+        <div class="note-more" v-if="commentList.length > 0">
           <span>查看全部</span>
           <span>MORE</span>
         </div>
@@ -168,6 +173,14 @@ export default Vue.extend({
       span
         color #666
         font-size 0.12rem
+    .noteItem-block
+      width 3rem
+      height 1rem
+      box-shadow 0 0.01rem 0.08rem 0 rgba(0, 0, 0, 0.1)
+      line-height 1rem
+      text-align center
+      font-size .14rem
+      color #666
 .van-divider
   height 0.3rem
   margin 0
