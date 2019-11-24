@@ -9,6 +9,7 @@ import account from 'pages/account/account'
 import topic from 'pages/topic/topic'
 import communityDetail from 'pages/community/communityDetail'
 import commpent from 'pages/detail/commpent'
+import shoppingCart from 'pages/shoppingCart/shoppingCart'
 
 Vue.use(VueRouter)
 const routes = [
@@ -63,6 +64,11 @@ const routes = [
     path: '/topic',
     name: 'topic',
     component: topic,
+  },
+  {
+    path: '/shoppingCart',
+    name: 'shoppingCart',
+    component: shoppingCart,
   }
  ]
 

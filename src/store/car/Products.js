@@ -6,6 +6,7 @@ const state = {
   productDetail:productDetails
 }
 
+
 const mutations = {
   [SETPRODUCTDETAIL](state, data ){
     state.productDetail = data
@@ -15,7 +16,6 @@ const mutations = {
 const actions = {
   [COMMITPRODUCTDETAIL]({commit,state},{ CnxhValue }){
     commit(SETPRODUCTDETAIL, CnxhValue )
-    // console.log(CnxhValue)
   }
 }
 export default {

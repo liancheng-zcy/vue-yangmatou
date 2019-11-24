@@ -332,27 +332,27 @@
       </div>
       <!-- 商品信息 -->
     </van-action-sheet>
-    <van-action-sheet v-model="infoShow" cancel-text="关闭" class="infoShow">
+    <van-action-sheet v-model="infoShow" title="已选商品" class="infoShow" close-icon = "close">
       <div class="sku-pop">
         <div class="sku-content">
           <div class="sku-info">
             <div
               class="pic"
-              style="background-image: url(&quot;http://pic1.ymatou.com/G02/shangou/M0A/B6/8A/CgzUDF1aPPaAV6rCAAXu_CdOiIE019_1_1_n_w_lb.jpg&quot;);"
+              :style="{ 'backgroundImage':' url(' + productDetail.pic +')'}"
             ></div>
             <div class="desc">
               <span class="price">
-                <i>¥&nbsp;</i>75
+                <i>¥&nbsp;</i>{{productDetail.price}}
               </span>
               <span class="stock">库存充足</span>
-              <span class="choosed">已选择: 血橙面膜-1盒=30片</span>
+              <span class="choosed">已选择: {{productDetail.name}}</span>
             </div>
           </div>
           <div class="spec-wrap">
             <div class="spec">
               <div class="title">规格分类</div>
-              <div class="options">
-                <span class="sku">血橙面膜-1盒=30片</span>
+              <div class="options" @click="selectedType">
+                <span :class="selected == true ? 'selected':'sku'">血橙面膜-1盒=30片</span>
                 <!-- :class="selected" -->
               </div>
             </div>
@@ -365,15 +365,15 @@
               </span>
             </div>
             <div class="amount">
-              <input type="button" value="-" onclick class="btn-minus" />
-              <span class="num">1</span>
-              <input type="button" value="+" onclick class="btn-plus" />
+              <input type="button" value="-" onclick class="btn-minus" @click="btnMinus" />
+              <span class="num">{{startNum}}</span>
+              <input type="button" value="+" onclick class="btn-plus" @click="btnPlus"/>
             </div>
           </div>
         </div>
         <div class="preorder-pop-layer preorder-pop-layer-active"></div>
         <div class="spec-confirm">
-          <span class="half">加入购物车</span>
+          <span class="half" @click="addCart(productDetail.name,productDetail.price)">加入购物车</span>
           <span class="half">立即购买</span>
         </div>
         <div class="close"></div>
@@ -389,11 +389,13 @@ import noteList from "components/detail/noteList";
 import Vue from "vue";
 import Ad from "components/common/ad";
 import Nav from "components/common/nav";
-import { Swipe, SwipeItem, Lazyload, ActionSheet } from "vant";
+import { Swipe, SwipeItem, Lazyload, ActionSheet,Toast } from "vant";
+import {SETCART , COMMITCART } from 'store/car/action-type.js'
 Vue.use(Swipe)
   .use(SwipeItem)
   .use(ActionSheet)
-  .use(Lazyload);
+  .use(Lazyload)
+  .use(Toast)
 export default Vue.extend({
   components: {
     Ad,
@@ -416,7 +418,10 @@ export default Vue.extend({
       handBuyer: [],
       productDetail: [],
       sellerInfo: {},
-      point: 0 //评分
+      point: 0, //评分
+      selected:false,
+      startNum:1,
+      allPrice:0
     };
   },
   watch: {
@@ -460,6 +465,7 @@ export default Vue.extend({
     this.productDetail = this.$store.state.Products.productDetail;
     this.sellerInfo = this.$store.state.Products.productDetail.sellerInfo;
     this.point = this.$store.state.Products.productDetail.sellerInfo.sellerDSR.DSRPoint.point;
+   
   },
   methods: {
     onChange(index) {
@@ -479,7 +485,52 @@ export default Vue.extend({
     },
     infoClick() {
       this.infoShow = true;
+    },
+    selectedType(){
+      this.selected = !this.selected
+    },
+    // 购物车
+    btnMinus(){
+      if(this.selected == false){
+        Toast('请选择型号');
+      }else{
+        if(this.startNum > 1){
+          this.startNum --
+        }else{
+           Toast('最少选择一件');
+        }
+      }
+
+      
+    },
+    btnPlus(){
+      if(this.selected == false){
+        Toast('请选择型号');
+      }else{
+        if(this.startNum < 20){
+          this.startNum ++
+        }else{
+          Toast('库存已空');
+        }
+      }
+
+    },
+    addCart(proName,price){
+      let itemInfo = {
+        proId:this.$route.params.id,
+        proImg:this.productDetail.pic,
+        proName:proName,
+        price:price,
+        sellerInfo:this.sellerInfo,
+        itemAllNum:this.startNum
+      }
+      
+     this.$store.dispatch('Car/' + COMMITCART,itemInfo)
+      // store.set('productDetail', this.CnxhValue)
+      console.log(this.$store.state.Car.cart)
     }
+
+
   }
 });
 </script>
@@ -1304,7 +1355,7 @@ export default Vue.extend({
         .sku-info
           width 100%
           display flex
-          height 1.02rem
+          height 1.2rem
           margin-bottom 0.1rem
           .pic
             width 1.02rem
@@ -1350,9 +1401,15 @@ export default Vue.extend({
               .selected
                 background-color #c33
                 color #fff
-                border none
                 position relative
                 border 1px solid #c33
+                display: inline-block;
+                padding: 0 0.08rem;
+                line-height: 0.2rem;
+                font-size: 0.12rem;
+                text-align: center;
+                border-radius: 0.03rem;
+                margin: 0.1rem 0.1rem 0 0;
               .sku
                 display inline-block
                 background-color #fff
@@ -1386,13 +1443,13 @@ export default Vue.extend({
             input
               height 0.25rem
               width 0.25rem
+              border 0
             .num
               width 0.38rem
               width 0.25rem
               text-align center
               line-height 0.25rem
       .spec-confirm
-        margin-left 0.1rem
         height 0.38rem
         width 100%
         display flex

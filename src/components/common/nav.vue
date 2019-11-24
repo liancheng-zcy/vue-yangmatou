@@ -22,11 +22,12 @@
             <span id="loadwaptopbar-community" :class="navType == 'community' ? 'active':''">社区</span>
           </a>
         </div>
-        <div class="icon-list" v-if="navType == 'detail' || navType == 'home'">
+        <div class="top-title" v-if="navType == 'shopingCar'">购物车 <i>(2)</i></div>
+        <div class="icon-list" v-if="navType == 'detail' || navType == 'home' || navType == 'shopingCar'">
           <a id="load-shopcart-icon" @click="cartClick">
-            <img src="~assets/images/car.png" alt="购物车" />
+            <img src="~assets/images/car.png" alt="购物车" v-if="navType != 'shopingCar'" />
           </a>
-          <a id="load-home-icon" v-if="navType == 'detail'"  @click="homeClick">
+          <a id="load-home-icon" v-if="navType == 'detail' || navType == 'shopingCar'"  @click="homeClick">
             <img src="~assets/images/home.png" alt="首页" />
           </a>
           <a id="load-personal-icon" @click="myClick" >
@@ -53,7 +54,7 @@ export default Vue.extend({
       this.$router.push("/myorder");
     },
     cartClick() {
-      alert("我是购物车");
+       this.$router.push("/shoppingCart");
     },
   },
   mounted(){
@@ -127,4 +128,13 @@ export default Vue.extend({
                 height: .18rem;
                 display: inline-block;
                 margin-top: .11rem
+          .top-title
+            float left
+            display inline-block
+            width: 2rem;
+            height: .4rem;
+            color: #515151;
+            font-size .16rem
+            text-align right 
+            line-height .4rem
 </style>
