@@ -332,17 +332,15 @@
       </div>
       <!-- 商品信息 -->
     </van-action-sheet>
-    <van-action-sheet v-model="infoShow" title="已选商品" class="infoShow" close-icon = "close">
+    <van-action-sheet v-model="infoShow" title="已选商品" class="infoShow" close-icon="close">
       <div class="sku-pop">
         <div class="sku-content">
           <div class="sku-info">
-            <div
-              class="pic"
-              :style="{ 'backgroundImage':' url(' + productDetail.pic +')'}"
-            ></div>
+            <div class="pic" :style="{ 'backgroundImage':' url(' + productDetail.pic +')'}"></div>
             <div class="desc">
               <span class="price">
-                <i>¥&nbsp;</i>{{productDetail.price}}
+                <i>¥&nbsp;</i>
+                {{productDetail.price}}
               </span>
               <span class="stock">库存充足</span>
               <span class="choosed">已选择: {{productDetail.name}}</span>
@@ -367,7 +365,7 @@
             <div class="amount">
               <input type="button" value="-" onclick class="btn-minus" @click="btnMinus" />
               <span class="num">{{startNum}}</span>
-              <input type="button" value="+" onclick class="btn-plus" @click="btnPlus"/>
+              <input type="button" value="+" onclick class="btn-plus" @click="btnPlus" />
             </div>
           </div>
         </div>
@@ -389,13 +387,13 @@ import noteList from "components/detail/noteList";
 import Vue from "vue";
 import Ad from "components/common/ad";
 import Nav from "components/common/nav";
-import { Swipe, SwipeItem, Lazyload, ActionSheet,Toast } from "vant";
-import {SETCART , COMMITCART } from 'store/car/action-type.js'
+import { Swipe, SwipeItem, Lazyload, ActionSheet, Toast } from "vant";
+import { SETCART, COMMITCART } from "store/car/action-type.js";
 Vue.use(Swipe)
   .use(SwipeItem)
   .use(ActionSheet)
   .use(Lazyload)
-  .use(Toast)
+  .use(Toast);
 export default Vue.extend({
   components: {
     Ad,
@@ -419,9 +417,9 @@ export default Vue.extend({
       productDetail: [],
       sellerInfo: {},
       point: 0, //评分
-      selected:false,
-      startNum:1,
-      allPrice:0
+      selected: false,
+      startNum: 1,
+      allPrice: 0
     };
   },
   watch: {
@@ -465,7 +463,6 @@ export default Vue.extend({
     this.productDetail = this.$store.state.Products.productDetail;
     this.sellerInfo = this.$store.state.Products.productDetail.sellerInfo;
     this.point = this.$store.state.Products.productDetail.sellerInfo.sellerDSR.DSRPoint.point;
-   
   },
   methods: {
     onChange(index) {
@@ -486,51 +483,46 @@ export default Vue.extend({
     infoClick() {
       this.infoShow = true;
     },
-    selectedType(){
-      this.selected = !this.selected
+    selectedType() {
+      this.selected = !this.selected;
     },
     // 购物车
-    btnMinus(){
-      if(this.selected == false){
-        Toast('请选择型号');
-      }else{
-        if(this.startNum > 1){
-          this.startNum --
-        }else{
-           Toast('最少选择一件');
+    btnMinus() {
+      if (this.selected == false) {
+        Toast("请选择型号");
+      } else {
+        if (this.startNum > 1) {
+          this.startNum--;
+        } else {
+          Toast("最少选择一件");
         }
       }
-
-      
     },
-    btnPlus(){
-      if(this.selected == false){
-        Toast('请选择型号');
-      }else{
-        if(this.startNum < 20){
-          this.startNum ++
-        }else{
-          Toast('库存已空');
+    btnPlus() {
+      if (this.selected == false) {
+        Toast("请选择型号");
+      } else {
+        if (this.startNum < 20) {
+          this.startNum++;
+        } else {
+          Toast("库存已空");
         }
       }
-
     },
-    addCart(proName,price){
+    addCart(proName, price) {
       let itemInfo = {
-        proId:this.$route.params.id,
-        proImg:this.productDetail.pic,
-        proName:proName,
-        price:price,
-        sellerInfo:this.sellerInfo,
-        itemAllNum:this.startNum
-      }
-      
-     this.$store.dispatch('Car/' + COMMITCART,itemInfo)
-      // store.set('productDetail', this.CnxhValue)
-      console.log(this.$store.state.Car.cart)
+        proId: this.$route.params.id,
+        proImg: this.productDetail.pic,
+        proName: proName,
+        price: price,
+        sellerInfo: this.sellerInfo,
+        itemAllNum: this.startNum
+      };
+
+      this.$store.dispatch("Car/" + COMMITCART, itemInfo);
+      Toast("成功加入购物车");
+      this.infoShow = false;
     }
-
-
   }
 });
 </script>
@@ -1403,13 +1395,13 @@ export default Vue.extend({
                 color #fff
                 position relative
                 border 1px solid #c33
-                display: inline-block;
-                padding: 0 0.08rem;
-                line-height: 0.2rem;
-                font-size: 0.12rem;
-                text-align: center;
-                border-radius: 0.03rem;
-                margin: 0.1rem 0.1rem 0 0;
+                display inline-block
+                padding 0 0.08rem
+                line-height 0.2rem
+                font-size 0.12rem
+                text-align center
+                border-radius 0.03rem
+                margin 0.1rem 0.1rem 0 0
               .sku
                 display inline-block
                 background-color #fff
